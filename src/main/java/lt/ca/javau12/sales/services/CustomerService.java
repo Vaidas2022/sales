@@ -1,4 +1,4 @@
-package lt.ca.javau12.sales;
+package lt.ca.javau12.sales.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.http.ProblemDetail;
 import org.springframework.stereotype.Service;
 
-import lt.ca.javau12.sales.dto.CustomerDto;
+import lt.ca.javau12.sales.dto.CustomerDTO;
 import lt.ca.javau12.sales.entities.Customer;
 import lt.ca.javau12.sales.mappers.CustomerMapper;
 import lt.ca.javau12.sales.repositories.CustomerRepository;
@@ -25,7 +25,7 @@ public class CustomerService {
 		this.customerMapper = customerMapper;
 	}
 
-	public List<CustomerDto> getAll() {
+	public List<CustomerDTO> getAll() {
 		
 		return customerRepository
 			.findAll()
@@ -35,13 +35,13 @@ public class CustomerService {
 
 	}
 
-	public Optional<CustomerDto> byId(Long id) {
+	public Optional<CustomerDTO> byId(Long id) {
 		return customerRepository
 				.findById(id)
 				.map(e -> customerMapper.toDto(e));
 	}
 
-	public CustomerDto create(CustomerDto dto) {
+	public CustomerDTO create(CustomerDTO dto) {
 		Customer entity = customerMapper.toEntity(dto);
 		return  customerMapper
 				.toDto(customerRepository.save(entity));	

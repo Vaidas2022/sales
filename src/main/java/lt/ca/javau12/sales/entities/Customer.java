@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lt.ca.javau12.sales.dto.CustomerDto;
+import lt.ca.javau12.sales.dto.CustomerDTO;
 
 @Entity
 @Table(name="customers")

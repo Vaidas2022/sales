@@ -2,7 +2,7 @@ package lt.ca.javau12.sales.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CustomerDto {
+public class CustomerDTO {
 
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private Long id;
@@ -10,9 +10,9 @@ public class CustomerDto {
 	private String name;
 	private String email;
 	
-	public CustomerDto() {}
+	public CustomerDTO() {}
 
-	public CustomerDto(Long id, String name, String email) {
+	public CustomerDTO(Long id, String name, String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;

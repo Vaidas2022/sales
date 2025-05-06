@@ -1,4 +1,4 @@
-package lt.ca.javau12.sales;
+package lt.ca.javau12.sales.controllers;
 
 import java.util.List;
 
@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lt.ca.javau12.sales.dto.CustomerDto;
+import lt.ca.javau12.sales.dto.CustomerDTO;
+import lt.ca.javau12.sales.services.CustomerService;
 
 @RestController
 @RequestMapping("/customers")
@@ -24,17 +25,17 @@ public class CustomerController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<CustomerDto>> getAll(){
+	public ResponseEntity<List<CustomerDTO>> getAll(){
 		return ResponseEntity.ok( customerService.getAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<CustomerDto> getCustomerById(@PathVariable Long id){
+	public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id){
 		return ResponseEntity.of( customerService.byId(id) );
 	}
 	
 	@PostMapping
-	public ResponseEntity<CustomerDto> create( @RequestBody CustomerDto dto) {
+	public ResponseEntity<CustomerDTO> create( @RequestBody CustomerDTO dto) {
 		return ResponseEntity
 				.status(HttpStatusCode.valueOf(201))
 				.body(customerService.create(dto));
