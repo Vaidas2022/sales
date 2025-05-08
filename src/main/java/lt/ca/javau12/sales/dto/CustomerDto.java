@@ -18,12 +18,15 @@ public class CustomerDTO {
 	@Email(message="Email not valid")
 	private String email;
 	
+	private String imageUrl;
+	
 	public CustomerDTO() {}
 
-	public CustomerDTO(Long id, String name, String email) {
+	public CustomerDTO(Long id, String name, String email, String imageUrl) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.imageUrl = imageUrl;
 	}
 
 
@@ -45,6 +48,14 @@ public class CustomerDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lt.ca.javau12.sales.dto.CustomerDTO;
@@ -23,13 +25,18 @@ public class Customer {
 	private String name;
 	private String email;
 	
+	@Lob
+	@Column(columnDefinition = "LONGBLOB")
+	private byte[] image;
+	
 	
 	@OneToMany( mappedBy = "customer", cascade = CascadeType.ALL  )
 	private List<Order> orders = new ArrayList<>();
 	
 	public Customer() {}
 	
-
+	
+	
 	
 	public Customer(Long id, String name, String email) {
 		this.id = id;
@@ -41,6 +48,8 @@ public class Customer {
 		this.name = name;
 		this.email = email;
 	}
+	
+	
 	
 	
 	//Getters and Setters
@@ -67,6 +76,14 @@ public class Customer {
 	}
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	
 	

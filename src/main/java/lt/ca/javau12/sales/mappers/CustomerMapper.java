@@ -12,7 +12,9 @@ public class CustomerMapper {
 		return new CustomerDTO(
 				entity.getId(),
 				entity.getName(),
-				entity.getEmail()
+				entity.getEmail(),
+				//     /customers/{id}/avatar
+				"/customers/" +  entity.getId() + "/avatar"
 				);
 	}
 	

@@ -1,10 +1,13 @@
 package lt.ca.javau12.sales.services;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ProblemDetail;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import lt.ca.javau12.sales.controllers.CustomerController;
 import lt.ca.javau12.sales.dto.CustomerDTO;
 import lt.ca.javau12.sales.entities.Customer;
@@ -46,6 +49,20 @@ public class CustomerService {
 		Customer entity = customerMapper.toEntity(dto);
 		return  customerMapper
 				.toDto(customerRepository.save(entity));	
+	}
+
+	public void uploadAvatar(Long id, MultipartFile file) throws IOException {
+		Customer customer = customerRepository.findById(id)
+				.orElseThrow( () -> new RuntimeException("Customer not found"));
+		
+		customer.setImage( file.getBytes() );
+		customerRepository.save(customer);
+	}
+
+	public byte[] getAvatar(Long id) {
+		Customer customer = customerRepository.findById(id)
+				.orElseThrow( () -> new RuntimeException("Customer not found"));				
+		return customer.getImage();
 	}
 
 }
