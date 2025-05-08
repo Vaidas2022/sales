@@ -25,6 +25,8 @@ public class OrderItem {
 	@JoinColumn(name = "goods_id")
 	private Goods goods;
 
+	
+	
 	public Long getId() {
 		return id;
 	}

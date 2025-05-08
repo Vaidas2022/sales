@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lt.ca.javau12.sales.dto.CustomerDTO;
 import lt.ca.javau12.sales.services.CustomerService;
 
@@ -35,7 +36,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<CustomerDTO> create( @RequestBody CustomerDTO dto) {
+	public ResponseEntity<CustomerDTO> create(@Valid @RequestBody CustomerDTO dto) {
 		return ResponseEntity
 				.status(HttpStatusCode.valueOf(201))
 				.body(customerService.create(dto));
